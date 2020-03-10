@@ -10,6 +10,12 @@ router.get("/signin", (req, res) => {
   query(sql, [obj.phone])
     .then((result) => {
       if (result.length == 0) {
+        var verification = "";
+        for (var i = 0; i < 6; i++) {
+          verification += Math.floor(Math.random() * 10);
+        }
+        obj.verification_code=verification
+        console.log(obj)
         var sql = "insert into xhs_user set ?";
         pool.query(sql, [obj], (err, result) => {
           err && console.log(err);
@@ -19,13 +25,16 @@ router.get("/signin", (req, res) => {
           }
         })
       } else {
+        var verification = "";
+        for (var i = 0; i < 6; i++) {
+          verification += Math.floor(Math.random() * 10);
+        } 
         var sql = "update xhs_user set verification_code=? where phone=?";
-        pool.query(sql, [obj.verification_code, obj.phone], (err, result) => {
+        pool.query(sql, [verification, obj.phone], (err, result) => {
           if (err) throw err;
-          console.log(result)
-          let verification_code = obj.verification_code;
           if (result.affectedRows > 0) {
-            res.send({ code: 1, result,verification_code})
+            res.send({ code: 1, result, obj:{'verification_code':verification} })
+            console.log(verification)
           } else {
             res.send({ code: 0, msg: "请重新发送..." })
           }
@@ -47,18 +56,18 @@ router.get("/login", (req, res) => {
   //   res.write(JSON.stringify({ ok: 0 }));
   //   res.end();
   // } else {
-    var sql = "select * from xhs_user where phone=? and verification_code=?";
-    pool.query(sql, [phone,verification_code], (err, result) => {
-      // res.write(JSON.stringify({ ok: 1, uname: result[0].uname }));
-      if(err) throw err;
-      console.log(result)
-      console.log(result.length)
-      if(result.length>0){
-        res.send({code:1,msg:"登录成功"})
-      }else{
-        res.send({code:-1,msg:"登录失败"})
-      }
-    })
+  var sql = "select * from xhs_user where phone=? and verification_code=?";
+  pool.query(sql, [phone, verification_code], (err, result) => {
+    // res.write(JSON.stringify({ ok: 1, uname: result[0].uname }));
+    if (err) throw err;
+    console.log(result)
+    console.log(result.length)
+    if (result.length > 0) {
+      res.send({ code: 1, msg: "登录成功" })
+    } else {
+      res.send({ code: -1, msg: "登录失败" })
+    }
+  })
   // }
 })
 //注销
