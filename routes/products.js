@@ -9,7 +9,7 @@ router.get("/product",(req,res)=>{
   })
 })
 router.get("/item",(req,res)=>{
-  var sql="SELECT lid,details_pic,title,price FROM xhs_product";
+  var sql="SELECT lid,details_pic,title,price,subtitle FROM xhs_product";
   pool.query(sql,(err,result)=>{
     if(err) throw err;
     res.send({code:1,data:result});

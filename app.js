@@ -37,6 +37,7 @@ server.use(session({
 // server.use("/products",products);
 server.use("/users",users);
 server.use(products);
+server.use(index);
 // server.use("/cartItems",cartItems)
 //注册history
 server.use(history());
