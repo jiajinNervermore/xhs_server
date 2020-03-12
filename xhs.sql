@@ -6,7 +6,11 @@
 -- 生成日期： 2020-03-11 13:26:08
 -- 服务器版本： 10.1.37-MariaDB
 -- PHP 版本： 7.3.1
+<<<<<<< HEAD
 
+=======
+--default-character-set=utf8
+>>>>>>> 27e5cfe61f2d4492671ac76a57a14df972f937ab
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -27,7 +31,13 @@ SET time_zone = "+00:00";
 --
 -- 表的结构 `xhs_brand`
 --
+<<<<<<< HEAD
 
+=======
+DROP DATABASE IF exists xhs;
+CREATE DATABASE xhs charset=utf8;
+USE xhs;
+>>>>>>> 27e5cfe61f2d4492671ac76a57a14df972f937ab
 CREATE TABLE `xhs_brand` (
   `bid` int(11) NOT NULL,
   `brand_id` int(11) DEFAULT NULL,
