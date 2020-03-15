@@ -62,8 +62,10 @@ CREATE TABLE xhs_product(
   lid INT PRIMARY KEY AUTO_INCREMENT,
   family_id INT,
   title VARCHAR(128),
+  price1 VARCHAR(12),
   price DECIMAL(10,2),
   serve VARCHAR(64),
+  imags VARCHAR(64),
   parameter VARCHAR(64),
   key_word VARCHAR(32),
   details VARCHAR(1024),
@@ -72,7 +74,7 @@ CREATE TABLE xhs_product(
   sold_count INT,
   is_onsale BOOL,
   FOREIGN KEY(family_id) REFERENCES xhs_family(fid)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 #创建数据表xhs_shopping_cart 购物车
 CREATE TABLE xhs_shopping_cart(
   cid INT PRIMARY KEY AUTO_INCREMENT,
@@ -135,49 +137,5 @@ CREATE TABLE xhs_video(
   attention int,
   distance VARCHAR(64)
 );
-
-/*插入商品类别*/
-INSERT INTO xhs_family VALUES(NULL,"护肤");
-INSERT INTO xhs_family VALUES(NULL,"彩妆");
-INSERT INTO xhs_family VALUES(NULL,"个人护理");
-INSERT INTO xhs_family VALUES(NULL,"保健品");
-INSERT INTO xhs_family VALUES(NULL,"母婴");
-INSERT INTO xhs_family VALUES(NULL,"包包");
-INSERT INTO xhs_family VALUES(NULL,"配饰");
-INSERT INTO xhs_family VALUES(NULL,"服装");
-INSERT INTO xhs_family VALUES(NULL,"内衣家居服");
-INSERT INTO xhs_family VALUES(NULL,"鞋靴");
-INSERT INTO xhs_family VALUES(NULL,"家居");
-INSERT INTO xhs_family VALUES(NULL,"家电数码");
-INSERT INTO xhs_family VALUES(NULL,"美食");
-INSERT INTO xhs_family VALUES(NULL,"运动");
-INSERT INTO xhs_family VALUES(NULL,"宠物");
-/*插入商品细分表关联分类表*/
-INSERT INTO xhs_subdivision VALUES(NULL,1,"img/product/subdivision/jiemian.jpg","洁面");
-INSERT INTO xhs_subdivision VALUES(NULL,1,"img/product/subdivision/huazhuangshui.jpg","化妆水");
-INSERT INTO xhs_subdivision VALUES(NULL,1,"img/product/subdivision/mianmo","面膜");
-INSERT INTO xhs_subdivision VALUES(NULL,1,"img/product/subdivision/xiezhaung.jpg","卸妆");
-INSERT INTO xhs_subdivision VALUES(NULL,1,"img/product/subdivision/jinghua.jpg","精华");
-INSERT INTO xhs_subdivision VALUES(NULL,1,"img/product/subdivision/ruyemianshuang.jpg","乳液面霜");
-INSERT INTO xhs_subdivision VALUES(NULL,1,"img/product/subdivision/yanbuhuli.jpg","眼部护理");
-INSERT INTO xhs_subdivision VALUES(NULL,1,"img/product/subdivision/chunbuhuli.jpg","唇部护理");
-INSERT INTO xhs_subdivision VALUES(NULL,1,"img/product/subdivision/meirongyiqi.jpg","美容仪器");
-INSERT INTO xhs_subdivision VALUES(NULL,1,"img/product/subdivision/fangshai.jpg","防晒");
-INSERT INTO xhs_subdivision VALUES(NULL,1,"img/product/subdivision/hufugongju.jpg","护肤工具");
-/*插入品牌数据*/
-INSERT INTO xhs_brand VALUES(NULL,1,"img/brand/yashilandai.jpg","雅诗兰黛","美国");
-INSERT INTO xhs_brand VALUES(NULL,1,"img/brand/AHC.jpg","AHC","韩国");
-INSERT INTO xhs_brand VALUES(NULL,1,"img/brand/OLAY.jpg","Olay","美国");
-INSERT INTO xhs_brand VALUES(NULL,1,"img/brand/SK-II.jpg","SK-Ⅱ","日本");
-INSERT INTO xhs_brand VALUES(NULL,1,"img/brand/lankou.jpg","兰蔻","法国");
-INSERT INTO xhs_brand VALUES(NULL,1,"img/brand/jiaolan.jpg","娇兰","中国");
-INSERT INTO xhs_brand VALUES(NULL,1,"img/brand/zishengtang.jpg","资生堂","日本");
-INSERT INTO xhs_brand VALUES(NULL,1,"img/brand/jifuzhiyao.jpg","肌肤之钥","日本");
-INSERT INTO xhs_brand VALUES(NULL,1,"img/brand/hou.jpg","后","韩国");
-INSERT INTO xhs_brand VALUES(NULL,1,"img/brand/henuo.jpg","荷诺","韩国");
-INSERT INTO xhs_brand VALUES(NULL,1,"img/brand/fuerjia.jpg","敷尔佳","中国");
-INSERT INTO xhs_brand VALUES(NULL,1,"img/brand/Bb_LABORATORIES.jpg","Bb_LABORATORIES","日本");
-/*插入商品*/
-INSERT INTO xhs_product VALUES(NULL,1,"460倍夯倍水",230,"{'wuliu':'小红书物流','fahuo':'保税仓发货','baoyou':'单件包邮','baoshui':'包税','tuihuan':'不支持无理由退换'}","175g","面膜","复活草之所以能够“复活”拥有如此强大的生命力，是因为复活草内蕴含天然糖基海藻糖，它有着惊人的锁水保湿能力。","img/product_details/4c47d41852701f5e.jpg","Bb_LABORATORIES",100,1);
-INSERT INTO xhs_product VALUES(NULL,1,"嫩肌活肤",1600,"{'wuliu':'小红书物流','fahuo':'保税仓发货','baoyou':'单件包邮','baoshui':'包税','tuihuan':'不支持无理由退换'}","100ml","精华肌底液","复活草之所以能够“复活”拥有如此强大的生命力，是因为复活草内蕴含天然糖基海藻糖，它有着惊人的锁水保湿能力。","img/product_details/4c47d41852701f5e.jpg","兰蔻",200,1);
-INSERT INTO xhs_product VALUES(NULL,1,"光感小白瓶",220,"{'wuliu':'小红书物流','fahuo':'保税仓发货','baoyou':'单件包邮','baoshui':'包税','tuihuan':'不支持无理由退换'}","175g","精华露","复活草之所以能够“复活”拥有如此强大的生命力，是因为复活草内蕴含天然糖基海藻糖，它有着惊人的锁水保湿能力。","img/product_details/4c47d41852701f5e.jpg","Olay",300,1);
+-- 商品详情页
+INSERT INTO `xhs_product` (`lid`,`title`,`price1`,`details_pic`,`imags`) VALUES (1,'50片装·口罩一次性使用过滤垫片','￥138.9','￥109.9','lkz.jpg')

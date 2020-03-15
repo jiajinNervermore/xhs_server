@@ -1,12 +1,22 @@
 //*** xhs服务器 ***
 //引入express模块
 const express = require("express")
+const mysql = require("mysql");//mysql模块
 //引入history模块
 const history = require("connect-history-api-fallback")
 //引入cors模块
 const cors = require('cors')
 //引入session模块
 const session = require("express-session")
+
+var pool = mysql.createPool({
+  host:"127.0.0.1",
+  user:"root",
+  password:"",
+  database:"xhs",
+  port:3306,
+  connectionLimit:15
+})
 //引入路由模块
 var index=require("./routes/index");
 var details=require("./routes/details");
@@ -43,3 +53,15 @@ server.use(history());
 server.listen(9527);
 
 console.log("服务器起动.......");
+
+server.get("/details",(req,res)=>{
+  var sql = "SELECT title,price1,details_pic,imags FROM xhs_product"
+  pool.query(sql,(err,result)=>{
+    if(err)throw err;
+    if(result.length==0){
+      res.send({code:-1,msg:"没有找到相关信息"});
+    }else{
+      res.send(result)
+    }
+  })
+})
