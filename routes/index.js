@@ -6,6 +6,7 @@ router.get("/index",(req,res)=>{
   pool.query(sql,(err,result)=>{
     if(err) throw err;
     res.send(result);
+    console.log(result)
   });
 });
 module.exports=router

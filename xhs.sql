@@ -6,11 +6,7 @@
 -- 生成日期： 2020-03-11 13:26:08
 -- 服务器版本： 10.1.37-MariaDB
 -- PHP 版本： 7.3.1
-<<<<<<< HEAD
-
-=======
 --default-character-set=utf8
->>>>>>> 27e5cfe61f2d4492671ac76a57a14df972f937ab
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -31,13 +27,9 @@ SET time_zone = "+00:00";
 --
 -- 表的结构 `xhs_brand`
 --
-<<<<<<< HEAD
-
-=======
 DROP DATABASE IF exists xhs;
 CREATE DATABASE xhs charset=utf8;
 USE xhs;
->>>>>>> 27e5cfe61f2d4492671ac76a57a14df972f937ab
 CREATE TABLE `xhs_brand` (
   `bid` int(11) NOT NULL,
   `brand_id` int(11) DEFAULT NULL,
@@ -111,7 +103,13 @@ CREATE TABLE `xhs_index` (
   `likes` int(11) DEFAULT NULL,
   `locat` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+INSERT INTO `xhs_index` (`pid`, `user`, `title`, `video`, `notes`, `likes`, `locat`) VALUES
+(1, '重庆探店王', '来重庆一定要尝尝爷爷的芋圆', 'img/index_item/1.png', NULL, 15, '5'),
+(2, 'LiLi妹儿', '重庆旅游 | 露天全景高空下午茶', 'img/index_item/2.png', NULL, 58, '12'),
+(3, '重庆探店王', '重庆旅游必打卡面馆,胖妹面庄', 'img/index_item/3.png', NULL, 68, '32'),
+(4, '爱旅拍的小伙儿', '重庆最烟火最适合做画报的老梯坎', 'img/index_item/4.png', NULL, 36, '45'),
+(5, 'jiiayue', '重庆探店【重庆首家校服体验馆】', 'img/index_item/5.png', NULL, 21, '7'),
+(6, '重庆旅游', '270度露天全江景下午茶', 'img/index_item/6.png', NULL, 99, '5');
 -- --------------------------------------------------------
 
 --
@@ -172,7 +170,8 @@ INSERT INTO `xhs_product` (`lid`, `family_id`, `title`, `price`, `serve`, `param
 (1, 1, '460倍夯倍水', '230.00', '{\'wuliu\':\'小红书物流\',\'fahuo\':\'保税仓发货\',\'baoyou\':\'单件包邮\',\'baoshui\':\'包税\',', '175g', '面膜', '复活草之所以能够“复活”拥有如此强大的生命力，是因为复活草内蕴含天然糖基海藻糖，它有着惊人的锁水保湿能力。', 'img/sp_item/01.png', 'Bb_LABORATORIES', 100, 1, '清爽uv 面部防晒SPE50'),
 (2, 1, '嫩肌活肤', '1600.00', '{\'wuliu\':\'小红书物流\',\'fahuo\':\'保税仓发货\',\'baoyou\':\'单件包邮\',\'baoshui\':\'包税\',', '100ml', '精华肌底液', '复活草之所以能够“复活”拥有如此强大的生命力，是因为复活草内蕴含天然糖基海藻糖，它有着惊人的锁水保湿能力。', 'img/sp_item/02.png', '兰蔻', 200, 1, '亚麻保湿水乳2件套套装'),
 (3, 1, '光感小白瓶', '220.00', '{\'wuliu\':\'小红书物流\',\'fahuo\':\'保税仓发货\',\'baoyou\':\'单件包邮\',\'baoshui\':\'包税\',', '175g', '精华露', '复活草之所以能够“复活”拥有如此强大的生命力，是因为复活草内蕴含天然糖基海藻糖，它有着惊人的锁水保湿能力。', 'img/sp_item/03.png', 'Olay', 300, 1, 'A.H.CAHC透明质酸神仙水乳洗面奶套盒');
-
+-- 商品详情页
+INSERT INTO `xhs_product` (`lid`,`title`,`price1`,`details_pic`,`imags`) VALUES (1,'50片装·口罩一次性使用过滤垫片','￥138.9','￥109.9','lkz.jpg')
 -- --------------------------------------------------------
 
 --
