@@ -171,7 +171,7 @@ INSERT INTO `xhs_product` (`lid`, `family_id`, `title`, `price`, `serve`, `param
 (2, 1, '嫩肌活肤', '1600.00', '{\'wuliu\':\'小红书物流\',\'fahuo\':\'保税仓发货\',\'baoyou\':\'单件包邮\',\'baoshui\':\'包税\',', '100ml', '精华肌底液', '复活草之所以能够“复活”拥有如此强大的生命力，是因为复活草内蕴含天然糖基海藻糖，它有着惊人的锁水保湿能力。', 'img/sp_item/02.png', '兰蔻', 200, 1, '亚麻保湿水乳2件套套装'),
 (3, 1, '光感小白瓶', '220.00', '{\'wuliu\':\'小红书物流\',\'fahuo\':\'保税仓发货\',\'baoyou\':\'单件包邮\',\'baoshui\':\'包税\',', '175g', '精华露', '复活草之所以能够“复活”拥有如此强大的生命力，是因为复活草内蕴含天然糖基海藻糖，它有着惊人的锁水保湿能力。', 'img/sp_item/03.png', 'Olay', 300, 1, 'A.H.CAHC透明质酸神仙水乳洗面奶套盒');
 -- 商品详情页
-INSERT INTO `xhs_product` (`lid`, `family_id`,`title`,`price`,`details_pic`) VALUES (4,3,'50片装·口罩一次性使用过滤垫片','￥138.9','lkz.jpg');
+INSERT INTO `xhs_product` (`lid`, `family_id`,`title`,`price`,`details_pic`) VALUES (4,3,'50片装·口罩一次性使用过滤垫片',138.90,'img/product_details/lkz.jpg');
 -- --------------------------------------------------------
 
 --

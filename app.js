@@ -12,10 +12,11 @@ const session = require("express-session")
 let server = express()
 //引入路由模块
 var index = require("./routes/index");
-var details = require("./routes/details");
+
 var products = require("./routes/products");
 var users = require("./routes/users");
 var cartItems = require("./routes/cartItems");
+var details = require("./routes/details");
 
 
 //配置跨域模块
@@ -40,8 +41,8 @@ server.use(session({
 server.use("/users", users);
 server.use(products);
 server.use(index);
-server.use(details)
-// server.use("/cartItems",cartItems)
+server.use(details);
+server.use(cartItems);
 //注册history
 server.use(history());
 //为服务器绑定监听端口 9527

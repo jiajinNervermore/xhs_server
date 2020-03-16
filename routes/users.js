@@ -15,11 +15,11 @@ router.get("/signin", (req, res) => {
           verification += Math.floor(Math.random() * 10);
         }
         obj.verification_code=verification
-        console.log(obj)
+        // console.log(obj)
         var sql = "insert into xhs_user set ?";
         pool.query(sql, [obj], (err, result) => {
           err && console.log(err);
-          console.log(result)
+          // console.log(result)
           if (result.affectedRows > 0) {
             res.send({ code: 1, result, obj })
           }
@@ -34,7 +34,7 @@ router.get("/signin", (req, res) => {
           if (err) throw err;
           if (result.affectedRows > 0) {
             res.send({ code: 1, result, obj:{'verification_code':verification} })
-            console.log(verification)
+            // console.log(verification)
           } else {
             res.send({ code: 0, msg: "请重新发送..." })
           }
@@ -51,7 +51,7 @@ router.get("/login", (req, res) => {
   var phone = req.query.phone;
   var verification_code = req.query.verification_code;
   var uid = req.session.uid
-  console.log(uid)
+  // console.log(uid)
   // if (uid == null) {
   //   res.write(JSON.stringify({ ok: 0 }));
   //   res.end();
