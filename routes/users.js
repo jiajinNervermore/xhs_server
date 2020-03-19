@@ -9,7 +9,9 @@ router.get("/signin", (req, res) => {
   var sql = "select verification_code,phone from xhs_user where phone=?";
   query(sql, [obj.phone])
     .then((result) => {
+      // 如果不存在改用户
       if (result.length == 0) {
+        // 重新生成一个随机数字
         var verification = "";
         for (var i = 0; i < 6; i++) {
           verification += Math.floor(Math.random() * 10);
@@ -25,10 +27,13 @@ router.get("/signin", (req, res) => {
           }
         })
       } else {
+        // 如果存在改用户
         var verification = "";
+        // 还是生成一个随机数
         for (var i = 0; i < 6; i++) {
           verification += Math.floor(Math.random() * 10);
         } 
+        // 功能变成修改改用户的验证码
         var sql = "update xhs_user set verification_code=? where phone=?";
         pool.query(sql, [verification, obj.phone], (err, result) => {
           if (err) throw err;
@@ -63,7 +68,7 @@ router.get("/login", (req, res) => {
     console.log(result)
     console.log(result.length)
     if (result.length > 0) {
-      res.send({ code: 1, msg: "登录成功" })
+      res.send({ code: 1, msg: "登录成功",data:result })
     } else {
       res.send({ code: -1, msg: "登录失败" })
     }

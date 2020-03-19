@@ -234,7 +234,6 @@ CREATE TABLE `xhs_shopping_cart` (
   `pic` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
 
 --
 -- 表的结构 `xhs_subdivision`
@@ -280,7 +279,12 @@ CREATE TABLE `xhs_user` (
   `gender` tinyint(1) DEFAULT NULL,
   `verification_code` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+INSERT INTO xhs_user VALUE(1,'jiajin','123456','594@qq.com','13555555555','nev',1,'123456');
+-- --------------------------------------------------------
+INSERT INTO `xhs_shopping_cart` (`cid`, `user_id`, `product_id`,`count`) VALUES
+(1, 1, 1,1);
+INSERT INTO `xhs_shopping_cart` (`cid`, `user_id`, `product_id`,`count`) VALUES
+(2, 1, 2,2);
 -- --------------------------------------------------------
 
 --
