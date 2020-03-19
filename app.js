@@ -10,14 +10,16 @@ const cors = require('cors')
 const session = require("express-session")
 //创建web服务器
 let server = express()
+
 //引入路由模块
+var addcart = require('./routes/addCart');
 var index = require("./routes/index");
 
 var products = require("./routes/products");
 var users = require("./routes/users");
 var cartItems = require("./routes/cartItems");
 var details = require("./routes/details");
-
+var delCarts = require('./routes/delCart')
 
 //配置跨域模块
 server.use(cors({
@@ -34,15 +36,14 @@ server.use(session({
   resave: true,//每次请求更新数据
   saveUninitialized: true,//保存初始化数据
 }));
-//使用路由器管理路由
-// server.use("/index",index);
-// server.use("/details",details);
-// server.use("/products",products);
+//挂载路由到服务器上
+server.use(addcart);
 server.use("/users", users);
 server.use(products);
 server.use(index);
 server.use(details);
 server.use(cartItems);
+server.use(delCarts);
 //注册history
 server.use(history());
 //为服务器绑定监听端口 9527

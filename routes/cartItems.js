@@ -1,13 +1,13 @@
 const express = require('express')
 var router = express.Router()
 var pool = require("../pool.js")
-var async = require('async');
+
 
 router.get("/cart", (req, res) => {
   //获取session id凭证
   var id = req.session.id;
-  var uid = req.query;
-  var uid = parseInt(uid.uid);
+  var obj = req.query;
+  var uid = parseInt(obj.uid);
   // console.log(uid);
   //2.如果当前用户没有登录凭证，输出请登录
   // if (!uid) {
@@ -18,7 +18,7 @@ router.get("/cart", (req, res) => {
   pool.query(sql, [uid], (err, result) => {
     try{
     if (err) throw err;
-    console.log(result);
+    // console.log(result);
     // 判断result是否为0 是则说明该用户购物车里没有商品，否则，说明有再根据查询到的商品编号，去商品表查询相应的商品信息，返回到前端
     if (result.length == 0) {
       res.send({ code: 0, msg: '购物车是空的' })
@@ -35,13 +35,13 @@ router.get("/cart", (req, res) => {
       console.log(lids.length, 'lids长度', typeof (lids.length));
       // 提前声明一个变量cartList 保存查询结果
       var cartList = [];
-      var sql = "SELECT family_id,title,parameter,key_word,price,store,details_pic FROM xhs_product where lid=?";
+      var sql = "SELECT lid,family_id,title,parameter,key_word,price,store,details_pic FROM xhs_product where lid=?";
       var len = lids.length;
       for (var i = 0; i < len; i++) {
         (function (sql, i, len) {
           pool.query(sql, [lids[i].product_id], (err, result) => {
             if (err) throw err
-            console.log(cartList)
+            // console.log(cartList)
             cartList.push(result[0])
             // 将购物车表里的数量强行赋值到返回数组对象里
             cartList[i].count=lids[i].count
